@@ -9,7 +9,7 @@ const clues = [
     },
     {
         title: "📖 The Brothers Karamazov ",
-        text: "Love without faith is an empty cup.'\nWhere does wisdom reside?",
+        text: "Love without faith is an empty cup. \nWhere does wisdom reside?",
         choices: ["Library", "Under a tree", "In your hands"],
         answer: 0,
         hint: "Where do books whisper their truths?",
@@ -158,6 +158,17 @@ function nextClue() {
         // alert("Congratulations! You've completed all the clues! 💝");
     }
 }
+
+document.getElementById("download-button").addEventListener("click", function () {
+    const link = document.createElement("a");
+    link.href = "Valentine's_Day_Gift_Tickets_Printable_Love_Coupon.pdf"; // Path to your PDF
+    link.download = "Valentine_Coupons.pdf"; // The name for the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+
 
 var confettiPlayers = [];
 
