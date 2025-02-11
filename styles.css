@@ -192,7 +192,8 @@
 .card-front-top {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    align-self: center;
     width: 40%;
     padding: 40px;
 }
@@ -493,3 +494,68 @@
     0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%
     );
   }
+
+
+  @media (max-width: 768px) {
+    /* Mobile adjustments */
+    #start-screen, #final-screen {
+        min-height: 70vh;
+        gap: 15px;
+    }
+
+    .flip-card-wrapper {
+        width: 80%;
+        height: 80%;
+    }
+
+    .clue_title{
+      font-size: 0.8em;
+      font-weight: bold;
+  }
+  .title{
+    font-size: 0.6em;
+}
+
+    .choices {
+        width: 90%;
+    }
+
+    #hint-popup {
+        width: 85%;
+    }
+    #reward-box{
+      flex-direction: column;
+      width: 65%;
+      height: 60%;
+    }
+
+    .notificationHeading {
+        font-size: 1em;
+    }
+
+    .movie-title {
+        font-size: 1em;
+    }
+    .left-section {
+        width: 100%;
+        height: 60%;
+    }
+    .right-section{
+      margin-top: 10px;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .barcode{
+      width: 100%;
+    }
+
+    .AllowBtn {
+        width: 90%;
+    }
+
+    #start-button, #download-button {
+        width: 80%;
+        font-size: 0.9em;
+    }
+}
