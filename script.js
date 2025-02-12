@@ -1,51 +1,70 @@
 const clues = [
     {
         title: "💔 Crime and Punishment ",
-        text: " Love is a crime only the heart can judge. \n Where does true confession happen?",
-        choices: ["Mirror", "Church", "Diary"],
+        qouts: " 📖 “To go wrong in one’s own way is better than to go right in someone else’s.”",
+        text: " A conscience burdened, a heart tremblin...where does one truly confess their sins?",
+        choices: ["🔮 A reflection of one’s sins", "🕍 A place where mercy is granted", "📜 A confession written in solitude"],
+        answerText: "Diary",
         answer: 2,
-        hint: "Think of where secrets are written, never spoken.",
-        reward: "Breackfast in Bed"
+        hint: "Words locked in ink hold the weight of redemption.",
+        reward: "Breackfast in Bed",
+        difficulty: 75
     },
     {
         title: "📖 The Brothers Karamazov ",
+        qouts: "📖 What is hell? I maintain that it is the suffering of being unable to love.",
         text: "Love without faith is an empty cup. \nWhere does wisdom reside?",
-        choices: ["Library", "Under a tree", "In your hands"],
+        choices: ["📚 A place where voices of the past still speak", "🌳 Beneath an ancient, knowing silence", "👐 Cradled within the hands of the seeker"],
+        answerText: "Library",
         answer: 0,
-        hint: "Where do books whisper their truths?",
-        reward: "A Yes Day"
+        hint: "To seek truth is to turn the page.",
+        reward: "A Yes Day",
+        difficulty: 85
     },
     {
         title: "🌙 White Nights ",
-        text: "A dreamer waits for love beneath the stars.'\nFind something that glows in the dark.",
-        choices: ["Candle", "Moon", "Lantern"],
+        qouts: "📖 Happiness does not lie in happiness, but in the achievement of it.",
+        text: "A dreamer walks alone, bathed in silver light—what celestial glow calls lovers home?",
+        choices: ["🕯️ A fleeting flicker of warmth ", "🌙 A silent companion of the sleepless ", "🏮 A lantern guiding lost souls"],
+        answerText: "Moon",
         answer: 1,
-        hint: "Look to the sky where lovers dream.",
-        reward: "Bubble Bath"
+        hint: "The poet’s muse, the lover’s hope.",
+        reward: "Bubble Bath",
+        difficulty: 60
     },
     {
         title: "💬 Notes from Underground ",
-        text: "A soul in isolation longs for connection.\nWhat carries our messages across the distance?",
-        choices: ["A letter", "A river", "A locked chest"],
+        qouts: "📖 Man is sometimes extraordinarily, passionately, in love with suffering.",
+        text: "Isolation breeds longing, and yet words can defy the void—what carries messages across distance?",
+        choices: ["✉️ Ink-stained confessions that time cannot erase", "🌊 A winding path that carries secrets afar", "🔒 Hidden truths bound in silence"],
+        answerText: "A Letter",
         answer: 0,
-        hint: "In past centuries, lovers poured their hearts into ink.",
-        reward: "Spa Day"
+        hint: "Love, even unspoken, still longs to be read.",
+        reward: "Spa Day",
+        difficulty: 90
     },
     {
+
         title: "💖 The Idiot ",
+        qouts: "📖 Beauty will save the world.",
         text: " The most beautiful thing in the world is kindness.\nWhere is kindness found?",
-        choices: ["A child's laughter", "A stranger's smile", "Both"],
+        choices: ["😂 In the melody of innocence", "😊 In the warmth of a fleeting moment ", "💞 In both, for kindness knows no boundary"],
+        answerText: "Both",
         answer: 2,
-        hint: "Kindness is everywhere, but you must open your heart.",
-        reward: "Picnic Date"
+        hint: "True beauty is found in the simplest gestures.",
+        reward: "Picnic Date",
+        difficulty: 70
     },
     {
         title: "🎭 Final Clue",
-        text: " The soul is healed by being with children, but love… love is eternal.\nWhere does love leave its mark?",
-        choices: ["A kiss", "A memory", "Both"],
+        qouts: "📖 The darker the night, the brighter the stars, the deeper the grief, the closer is God!",
+        text: "If love is eternal, where does it leave its mark?",
+        choices: ["💋 A promise left upon trembling lips", "🕰️ A memory that lingers beyond the years", "🌹 In both, for love never truly fades"],
+        answerText: "Both",
         answer: 2,
-        hint: "Love is not only felt in the moment but in the echoes of time.",
-        reward: "Your Wish"
+        hint: "Love is more than a moment; it is the past, the present, and the eternal.",
+        reward: "Your Wish",
+        difficulty: 80
     }
 ];
 
@@ -83,6 +102,7 @@ function startGame() {
 function showClue() {
     // Update clue content
     document.getElementById("clue-text").innerText = clues[currentClue].text;
+    document.getElementById("clue-qouts").innerText = clues[currentClue].qouts;
     document.getElementById("clue-title").innerText = clues[currentClue].title;
     document.getElementById("clue-number").innerText = currentClue + 1;
 
@@ -105,6 +125,8 @@ function checkAnswer(choice) {
         // Show reward box with animation
         const rewardBox = document.getElementById("reward-box");
         rewardBox.classList.remove("hidden");
+        document.querySelector(".hint_answer").innerText = "Answer: " + clues[currentClue].answerText;
+        document.querySelector(".seat-number-large").innerText = clues[currentClue].difficulty + "/100";
         document.querySelector(".coupon-text").innerText = "Good for: " + clues[currentClue].reward;
     } else {
         alert("Incorrect! Try again.");
