@@ -5,6 +5,15 @@
     font-family: 'Arial', sans-serif;
 }
 
+
+body {
+  /* background-image: url('path/to/your/image.jpg'); */
+  background-image: url('valentines-day.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .container {
     text-align: center;
     padding: 20px;
@@ -22,7 +31,7 @@
     justify-content: center;
     min-height: 80vh;
     gap: 20px;
-    
+    color: #fff;
 }
 #final-screen {
     display: flex;

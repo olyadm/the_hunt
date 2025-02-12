@@ -8,7 +8,8 @@ const clues = [
         answer: 2,
         hint: "Words locked in ink hold the weight of redemption.",
         reward: "Breackfast in Bed",
-        difficulty: 75
+        difficulty: 75,
+        background: "images/diary.jpg"
     },
     {
         title: "📖 The Brothers Karamazov ",
@@ -19,7 +20,8 @@ const clues = [
         answer: 0,
         hint: "To seek truth is to turn the page.",
         reward: "A Yes Day",
-        difficulty: 85
+        difficulty: 85,
+        background: "images/library.jpg"
     },
     {
         title: "🌙 White Nights ",
@@ -30,7 +32,8 @@ const clues = [
         answer: 1,
         hint: "The poet’s muse, the lover’s hope.",
         reward: "Bubble Bath",
-        difficulty: 60
+        difficulty: 60,
+        background: "images/moon.jpg"
     },
     {
         title: "💬 Notes from Underground ",
@@ -41,7 +44,8 @@ const clues = [
         answer: 0,
         hint: "Love, even unspoken, still longs to be read.",
         reward: "Spa Day",
-        difficulty: 90
+        difficulty: 90,
+        background: "images/letter.jpg"
     },
     {
 
@@ -53,7 +57,8 @@ const clues = [
         answer: 2,
         hint: "True beauty is found in the simplest gestures.",
         reward: "Picnic Date",
-        difficulty: 70
+        difficulty: 70,
+        background: "images/both.jpg"
     },
     {
         title: "🎭 Final Clue",
@@ -64,7 +69,8 @@ const clues = [
         answer: 2,
         hint: "Love is more than a moment; it is the past, the present, and the eternal.",
         reward: "Your Wish",
-        difficulty: 80
+        difficulty: 80,
+        background: "images/kiss.jpg"
     }
 ];
 
@@ -77,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Make sure only start screen is visible initially
     hideAllScreens();
     document.getElementById("start-screen").classList.remove("hidden");
+    changeBackground("images/valentines-day.jpg");
     
     // Add event listener to start button
     document.getElementById("start-button").addEventListener("click", startGame);
@@ -93,6 +100,7 @@ function hideAllScreens() {
 function startGame() {
     hideAllScreens();
     document.getElementById("game-area").classList.remove("hidden");
+    changeBackground("images/bear.webp");
     showClue();
 
 
@@ -105,6 +113,7 @@ function showClue() {
     document.getElementById("clue-qouts").innerText = clues[currentClue].qouts;
     document.getElementById("clue-title").innerText = clues[currentClue].title;
     document.getElementById("clue-number").innerText = currentClue + 1;
+    changeBackground(clues[currentClue].background);
 
     // Update choice buttons
     const choiceButtons = document.querySelectorAll(".choice-btn");
@@ -170,15 +179,48 @@ function nextClue() {
     if (currentClue < clues.length - 1) {
         currentClue++;
         document.getElementById("reward-box").classList.add("hidden");
+        changeBackground(clues[currentClue].background);
         showClue();
     } else {
         // Game is complete
         hideAllScreens();
         document.getElementById("final").classList.remove("hidden");
+        changeBackground(clues[currentClue].background);
 
         // showFinal();
         // alert("Congratulations! You've completed all the clues! 💝");
     }
+}
+
+
+/* Function to Change Background with Fly-In Animation */
+function changeBackground(imagePath) {
+    const body = document.body;
+    const bgOverlay = document.createElement("div");
+    
+    bgOverlay.style.position = "fixed";
+    bgOverlay.style.top = "0";
+    bgOverlay.style.left = "-100vw"; /* Start outside screen */
+    bgOverlay.style.width = "100vw";
+    bgOverlay.style.height = "100vh";
+    bgOverlay.style.backgroundImage = `url(${imagePath})`;
+    bgOverlay.style.backgroundSize = "cover";
+    bgOverlay.style.backgroundPosition = "center";
+    bgOverlay.style.zIndex = "-1";
+    bgOverlay.style.transition = "left 1.2s ease-in-out";
+
+    body.appendChild(bgOverlay);
+    
+    setTimeout(() => {
+        bgOverlay.style.left = "0"; /* Move into view */
+    }, 50);
+
+    setTimeout(() => {
+        document.body.style.backgroundImage = `url(${imagePath})`;
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        body.removeChild(bgOverlay); /* Remove overlay after animation */
+    }, 1200);
 }
 
 document.getElementById("download-button").addEventListener("click", function () {
