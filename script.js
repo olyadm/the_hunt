@@ -7,7 +7,7 @@ const clues = [
         answerText: "Diary",
         answer: 2,
         hint: "Words locked in ink hold the weight of redemption.",
-        reward: "Breackfast in Bed",
+        reward: "I Cook For you",
         difficulty: 75,
         background: "images/diary.jpg"
     },
